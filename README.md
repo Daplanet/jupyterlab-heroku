@@ -1,6 +1,9 @@
 # jupyterlab-heroku
 
+![[Deploy to heroku](https://img.shields.io/badge/%E2%86%91_Deploy_to-Heroku-7056bf.svg)](https://www.heroku.com/deploy)
+
 A simple setup for deploying the <a href="https://github.com/jupyterlab/jupyterlab">JupyterLab</a> computational environment to <a href="https://www.heroku.com/">Heroku</a>.
+
 
 # Instructions
 
