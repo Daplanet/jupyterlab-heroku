@@ -1,0 +1,16 @@
+{
+  "name": "Jupterlab on heroku",
+  "description": "An Easy Way to Setup JupyterLab on Heroku",
+  "keywords": [
+    "python",
+    "interactive"
+  ],
+  "repository": "https://github.com/Daplanet/jupyterlab-heroku",
+  "success_url": "/",
+  "stack": "heroku-20",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
