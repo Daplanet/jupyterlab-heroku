@@ -28,6 +28,7 @@ def setup(ctx, props):
 
 @task(default=True)
 def launch(ctx):
+    """ Serves web.1 dyno with shell script """
     ctx.run("./launch.sh")
 
 @task
