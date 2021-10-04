@@ -1,38 +1,37 @@
+"""
+Sideloader buildpack init - v1.0
+"""
+
 import os
 from pathlib import Path
 from invoke import task, call
 
 EXTS = [
-  { "name": "jupyter_dashboards", "type": 0 },
-  { "name": "jupyterlab", "type": 1 },
-  { "name": "voila", "type": 1 },
-  { "name": "@voila-dashboards/jupyterlab-preview", "type": 2 }]
+    { "name": "jupyter_dashboards", "type": 0 },
+    { "name": "jupyterlab", "type": 1 },
+    { "name": "voila", "type": 1 },
+    { "name": "@voila-dashboards/jupyterlab-preview", "type": 2 }]
 
-EXT_TYPE_ENUM = [
-  "nb",
-  "server",
-  "lab"
-]
+EXT_TYPE_ENUM = [ "nb", "server", "lab" ]
 
 @task
 def setup(ctx, props):
-  props['root'].mkdir()
+    props['root'].mkdir()
 
-  for ext in props['extentions']:
-    ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention install --py {ext.name} --sys-prefix")
-    ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention enable --py {ext.name} --sys-prefix")
-
-    if ext.type == int(2):
-      ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention install {ext.name}")
+    for ext in props['extentions']:
+        ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention install --py {ext.name} --sys-prefix")
+        ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention enable --py {ext.name} --sys-prefix")
+        
+        if ext.type == int(2):
+            ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention install {ext.name}")
 
 @task(default=True)
 def serve(ctx):
+    root = Path("./root")
 
-  root = Path("./root")
+    if not root.is_dir():
+        call(setup, props={ "root": root, "extentions": EXTS })
 
-  if not root.is_dir():
-    call(setup, props={ "root": root, "extentions": EXTS })
-
-  with ctx.cd(str(root)):
-    with ctx.prefix("export JUPYTER_CONFIG_DIR=/app"):
-      ctx.run(f"jupyter lab --port={os.environ.get('PORT', 3000)}")
+    with ctx.cd(str(root)):
+        with ctx.prefix("export JUPYTER_CONFIG_DIR=/app"):
+            ctx.run(f"jupyter lab --port={os.environ.get('PORT', 3000)}")
