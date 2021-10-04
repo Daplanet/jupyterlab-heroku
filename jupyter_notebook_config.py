@@ -1,3 +1,4 @@
+# pylint: skip-file
 # https://devcenter.heroku.com/articles/ssl-endpoint
 #
 # As long as the notebook lives in the herokuapp.com domain,
