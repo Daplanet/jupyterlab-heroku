@@ -7,7 +7,7 @@
     "interactive"
   ],
   "scripts": {
-    "postdeploy": "invoke setup",
+    "postdeploy": "invoke setup"
   },
   "repository": "https://github.com/Daplanet/jupyterlab-heroku",
   "success_url": "/notebook",
