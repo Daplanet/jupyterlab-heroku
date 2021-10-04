@@ -17,7 +17,7 @@ seaborn
 wordcloud
 nltk
 sklearn
-scikitplot
+scikit-plot
 ipywidgets
 nbtools
 jupygit
