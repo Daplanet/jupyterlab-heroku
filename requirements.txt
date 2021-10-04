@@ -16,6 +16,7 @@ numpy
 scipy
 voila
 voila-material
+nbconvert
 pandas
 matplotlib
 seaborn
