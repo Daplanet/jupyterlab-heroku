@@ -27,6 +27,10 @@ def setup(ctx, props):
             ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention install {ext.name}")
 
 @task(default=True)
+def launch(ctx):
+    ctx.run("./launch.sh")
+
+@task
 def serve(ctx):
     """ Serves web.1 dyno. """
     root = Path("./root")
