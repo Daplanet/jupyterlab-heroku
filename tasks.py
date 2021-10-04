@@ -2,11 +2,20 @@ import os
 from pathlib import Path
 from invoke import task, call
 
+EXTS = [
+    { name: "jupyter_dashboards", type: 0 },
+    { name: "jupyterlab", type: 1 },
+    { name: "voila", type: 1 },
+    { name: "@voila-dashboards/jupyterlab-preview", type: 2 }
+]
+
 EXT_TYPE_ENUM = [
   "nb",
   "server",
   "lab"
 ]
+
+ROOT = Path("./root")
 
 @task
 def setup(ctx, props={}):
@@ -21,15 +30,9 @@ def setup(ctx, props={}):
 
 @task(default=True)
 def serve(ctx):
-  root = Path("./root")
-  exts = [
-    { name: "jupyter_dashboards", type: 0 },
-    { name: "jupyterlab", type: 1 },
-    { name: "voila", type: 1 },
-    { name: "@voila-dashboards/jupyterlab-preview", type: 2 }]
 
   if not root.is_dir():
-    call(setup, { root: root, extentions = exts })
+    call(setup, props={ root: ROOT, extentions = EXTS })
 
   with ctx.cd(str(root)):
     with ctx.prefix("export JUPYTER_CONFIG_DIR=/app"):
