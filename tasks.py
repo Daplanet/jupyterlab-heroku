@@ -16,17 +16,19 @@ EXT_TYPE_ENUM = [ "nb", "server", "lab" ]
 
 @task
 def setup(ctx, props):
+    """ Installs and configures environment post buildpack """
     props['root'].mkdir()
 
     for ext in props['extentions']:
         ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention install --py {ext.name} --sys-prefix")
         ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention enable --py {ext.name} --sys-prefix")
-        
+
         if ext.type == int(2):
             ctx.run(f"jupyter {EXT_TYPE_ENUM[ext.type]}extention install {ext.name}")
 
 @task(default=True)
 def serve(ctx):
+    """ Serves web.1 dyno. """
     root = Path("./root")
 
     if not root.is_dir():
