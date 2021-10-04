@@ -5,8 +5,11 @@
     "python",
     "interactive"
   ],
+  "scripts": {
+    "postdeploy": "invoke postdeploy",
+  }
   "repository": "https://github.com/Daplanet/jupyterlab-heroku",
-  "success_url": "/",
+  "success_url": "/notebook",
   "stack": "heroku-20",
   "buildpacks": [
     {
