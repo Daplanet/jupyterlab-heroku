@@ -15,8 +15,6 @@ EXT_TYPE_ENUM = [
   "lab"
 ]
 
-ROOT = Path("./root")
-
 @task
 def setup(ctx, props={}):
   props['root'].mkdir()
@@ -31,8 +29,10 @@ def setup(ctx, props={}):
 @task(default=True)
 def serve(ctx):
 
+  root = Path("./root")
+
   if not root.is_dir():
-    call(setup, props={ root: ROOT, extentions = EXTS })
+    call(setup, props={ root: root, extentions: EXTS })
 
   with ctx.cd(str(root)):
     with ctx.prefix("export JUPYTER_CONFIG_DIR=/app"):
