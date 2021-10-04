@@ -1,6 +1,11 @@
 jupyter
 jupyterlab
+tornado
 jupyter-tensorboard
+jupyter_dashboards
+ipywidgets
+nbtools
+jupygit
 metakernel
 wolframalpha
 calysto_scheme
@@ -18,9 +23,5 @@ wordcloud
 nltk
 sklearn
 scikit-plot
-ipywidgets
-nbtools
-jupygit
 conda
-jupyter_dashboards
 invoke
