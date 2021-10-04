@@ -20,3 +20,5 @@ scikitplot
 ipywidgets
 nbtools
 jupygit
+conda
+jupyter_dashboards
