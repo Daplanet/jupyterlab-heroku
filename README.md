@@ -1,4 +1,4 @@
-# jupyterlab-heroku
+# jupyterlab-heroku 
 
 [![Deploy to heroku](https://img.shields.io/badge/%E2%86%91_Deploy_to-Heroku-7056bf.svg)](https://www.heroku.com/deploy)
 
