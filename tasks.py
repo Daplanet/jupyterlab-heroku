@@ -11,7 +11,7 @@ extention_type_enum = [
 extentions = [
   { name: "jupyter_dashboards", type: 0 },
   { name: "jupyterlab", type: 1 },
-  { name: "voila", type 1 },
+  { name: "voila", type: 1 },
   { name: "@voila-dashboards/jupyterlab-preview", type: 2 }
 ]
 
